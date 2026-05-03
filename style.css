@@ -1,0 +1,204 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: #fafafa;
+    min-height: 100vh;
+}
+
+.site {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 24px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: #111;
+    letter-spacing: -0.02em;
+    margin-bottom: 48px;
+}
+
+@media (max-width: 550px) {
+    h1 {
+        font-size: 1.75rem;
+        margin-bottom: 32px;
+    }
+}
+
+button {
+    background: #111;
+    border: none;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 500;
+    padding: 12px 48px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: inherit;
+    letter-spacing: 0.5px;
+    margin-bottom: 48px;
+}
+
+button:hover {
+    background: #333;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+.result {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#clubLogo {
+    max-width: 100%;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 24px;
+}
+
+#clubName {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #666;
+    letter-spacing: 0.3px;
+    word-break: break-word;
+}
+
+/* Кнопка обратной связи */
+.feedback-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: transparent;
+    color: #999;
+    border: 1.5px solid #ccc;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 1;
+}
+
+.feedback-button:hover {
+    border-color: #666;
+    color: #333;
+}
+
+/* Модальное окно */
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.modal-content p {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.close:hover {
+    color: #333;
+}
+
+textarea#feedbackText {
+    width: 100%;
+    height: 100px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    font-family: inherit;
+    resize: vertical;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+#sendFeedback {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: transform 0.2s;
+}
+
+#sendFeedback:hover {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 550px) {
+    .site {
+        padding: 40px 20px;
+    }
+    
+    button {
+        font-size: 1rem;
+        padding: 10px 40px;
+        margin-bottom: 32px;
+    }
+    
+    #clubLogo {
+        max-height: 200px;
+    }
+    
+    #clubName {
+        font-size: 0.875rem;
+    }
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Random Football Club Logo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="site">
+        <h1>Random Football Club Logo</h1>
+        
+        <button id="randomButton">GO</button>
+        
+        <div id="result" class="result" style="display: none;">
+            <img id="clubLogo" src="" alt="Club Logo">
+            <p id="clubName"></p>
+        </div>
+    </div>
+
+    <!-- Кнопка обратной связи -->
+    <button id="feedbackBtn" class="feedback-button" title="Report an Error">!</button>
+
+    <!-- Модальное окно -->
+    <div id="feedbackModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Report an Error</h3>
+            <p>If the logo doesn't match the club, let us know:</p>
+            <form id="feedbackForm" action="https://formspree.io/f/xojrevay" method="POST">
+                <textarea id="feedbackText" name="message" placeholder="E.g.: Barcelona logo shows Real Madrid..." required></textarea>
+                <button type="submit" id="sendFeedback">Send</button>
+            </form>
+            <p id="feedbackStatus" style="margin-top: 10px; font-size: 0.9em;"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
