@@ -7,21 +7,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <button id="backButton" class="back-arrow" title="Previous logo">←</button>
+
     <div class="site">
         <h1>Random Football Club Logo</h1>
         
-        <button id="randomButton">GO</button>
-        
         <div id="result" class="result" style="display: none;">
-            <img id="clubLogo" src="" alt="Club Logo">
+            <div class="logo-wrapper">
+                <img id="clubLogo" src="" alt="Club Logo">
+            </div>
             <p id="clubName"></p>
         </div>
+        
+        <button id="randomButton">GO</button>
     </div>
 
-    <!-- Кнопка обратной связи -->
+    <div id="historyDots" class="history-dots"></div>
     <button id="feedbackBtn" class="feedback-button" title="Report an Error">!</button>
 
-    <!-- Модальное окно -->
     <div id="feedbackModal" class="modal" style="display: none;">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -31,7 +34,7 @@
                 <textarea id="feedbackText" name="message" placeholder="E.g.: Barcelona logo shows Real Madrid..." required></textarea>
                 <button type="submit" id="sendFeedback">Send</button>
             </form>
-            <p id="feedbackStatus" style="margin-top: 10px; font-size: 0.9em;"></p>
+            <p id="feedbackStatus"></p>
         </div>
     </div>
 
