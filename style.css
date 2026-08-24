@@ -25,18 +25,6 @@ h1 {
     margin-bottom: 48px;
 }
 
-.intro {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-}
-
 #randomButton {
     background: #111;
     border: none;
@@ -234,7 +222,7 @@ h1 {
 }
 
 .modal[hidden] {
-    display: none;
+    display: none !important;
 }
 
 .modal-content {
