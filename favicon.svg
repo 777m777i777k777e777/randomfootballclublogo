@@ -2,12 +2,12 @@
   <defs><clipPath id="ball"><circle cx="100" cy="100" r="91"/></clipPath></defs>
   <circle cx="100" cy="100" r="91" fill="#fafafa" stroke="#111" stroke-width="8"/>
   <g clip-path="url(#ball)" stroke="#111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M100 62 133 86 120 126H80L67 86Z" fill="#111"/>
+    <path d="M100 62 133 86 120 132H80L67 86Z" fill="#111"/>
     <path d="M76 12h48l8 26-32 20-32-20Z" fill="#111"/>
     <path d="m158 43 27 12 5 29-21 18-26-17 3-25Z" fill="#111"/>
-    <path d="m175 128 9 30-20 23-29-5-7-26 18-18Z" fill="#111"/>
-    <path d="m25 128-9 30 20 23 29-5 7-26-18-18Z" fill="#111"/>
+    <path d="m175 126 9 30-22 24-30-7-6-22 22-21Z" fill="#111"/>
+    <path d="m25 126-9 30 22 24 30-7 6-22-22-21Z" fill="#111"/>
     <path d="M42 43 15 55l-5 29 21 18 26-17-3-25Z" fill="#111"/>
-    <path d="M100 62v-4M133 86l10-1M120 126l8 24M80 126l-8 24M67 86l-10-1M68 38 54 60M132 38l14 22M169 102l6 26M135 176l-35 10M65 176l35 10M31 102l-6 26" fill="none"/>
+    <path d="M100 62v-4M133 86l10-1M120 132l6 19M80 132l-6 19M67 86l-10-1M68 38 54 60M132 38l14 22M169 102l6 24M132 173l-32 8M68 173l32 8M31 102l-6 24" fill="none"/>
   </g>
 </svg>
