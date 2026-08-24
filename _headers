@@ -1,3 +1,15 @@
 /*
-  Access-Control-Allow-Origin: *
-  Cache-Control: public, max-age=31536000
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  X-Frame-Options: DENY
+  Content-Security-Policy: default-src 'self'; img-src 'self' https://pub-e180267a78614921b022128e601edd36.r2.dev data:; connect-src 'self' https://formspree.io; form-action https://formspree.io; script-src 'self'; style-src 'self'; base-uri 'self'; frame-ancestors 'none'
+
+/logos_clean.json
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/*.css
+  Cache-Control: public, max-age=86400
+
+/*.js
+  Cache-Control: public, max-age=86400

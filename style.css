@@ -25,6 +25,18 @@ h1 {
     margin-bottom: 48px;
 }
 
+.intro {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 #randomButton {
     background: #111;
     border: none;
@@ -107,6 +119,10 @@ h1 {
     border-radius: 0;
 }
 
+.back-arrow:disabled {
+    color: #ddd;
+}
+
 .back-arrow:hover {
     background: none !important;
 }
@@ -148,6 +164,12 @@ h1 {
     cursor: pointer;
     transition: background 0.2s, transform 0.2s;
     position: relative;
+    padding: 0;
+    border: 0;
+}
+
+.history-dot[aria-current="true"] {
+    background: #999;
 }
 
 .history-dot:hover {
@@ -211,6 +233,10 @@ h1 {
     align-items: center;
 }
 
+.modal[hidden] {
+    display: none;
+}
+
 .modal-content {
     background: white;
     padding: 30px;
@@ -221,9 +247,10 @@ h1 {
     position: relative;
 }
 
-.modal-content h3 {
-    margin-top: 0;
+.modal-content h2 {
+    margin: 0 0 15px;
     color: #333;
+    font-size: 1.17em;
 }
 
 .modal-content p {
@@ -239,6 +266,9 @@ h1 {
     font-size: 28px;
     cursor: pointer;
     color: #aaa;
+    background: transparent;
+    border: 0;
+    padding: 0;
 }
 
 .close:hover {
@@ -273,16 +303,22 @@ textarea#feedbackText {
 }
 
 /* Focus */
-button:focus,
-button:focus-visible {
-    outline: none !important;
-    box-shadow: none !important;
+button:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid #111;
+    outline-offset: 3px;
 }
 
-.back-arrow:focus,
-.back-arrow:focus-visible {
-    outline: none !important;
-    box-shadow: none !important;
+.noscript {
+    padding: 16px;
+    text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
 }
 
 /* Mobile */

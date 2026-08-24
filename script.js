@@ -13,6 +13,7 @@ let availableIds = [];
 let isLoading = true;
 const history = [];
 let historyIndex = -1;
+let currentClub = null;
 
 // ==========================================
 // DATA LOADING
@@ -59,7 +60,9 @@ function showClubById(clubId, clubName) {
     const nameEl = document.getElementById('clubName');
     const resultDiv = document.getElementById('result');
     
+    currentClub = { clubId, clubName };
     nameEl.textContent = clubName;
+    img.alt = `${clubName} football club logo`;
     img.style.opacity = '0';
     img.src = buildLogoUrl(clubId);
     
@@ -82,11 +85,15 @@ function showRandomClub() {
     if (isLoading) return;
     if (availableIds.length === 0) return;
     
-    const clubId = availableIds[Math.floor(Math.random() * availableIds.length)];
+    let clubId;
+    do {
+        clubId = availableIds[Math.floor(Math.random() * availableIds.length)];
+    } while (availableIds.length > 1 && currentClub && clubId === currentClub.clubId);
     const clubName = getClubName(clubId);
     
     showClubById(clubId, clubName);
     
+    if (historyIndex < history.length - 1) history.splice(historyIndex + 1);
     history.push({ clubId, clubName });
     historyIndex = history.length - 1;
     updateBackButton();
@@ -102,6 +109,7 @@ function goBack() {
         const prev = history[historyIndex];
         showClubById(prev.clubId, prev.clubName);
         updateBackButton();
+        updateHistoryDots();
     }
 }
 
@@ -110,11 +118,13 @@ function jumpToHistory(index) {
     const item = history[index];
     showClubById(item.clubId, item.clubName);
     updateBackButton();
+    updateHistoryDots();
 }
 
 function updateBackButton() {
     const btn = document.getElementById('backButton');
     btn.classList.toggle('active', historyIndex > 0);
+    btn.disabled = historyIndex <= 0;
 }
 
 function updateHistoryDots() {
@@ -124,9 +134,12 @@ function updateHistoryDots() {
     
     container.innerHTML = '';
     recent.forEach((h, i) => {
-        const dot = document.createElement('span');
+        const dot = document.createElement('button');
+        dot.type = 'button';
         dot.className = 'history-dot';
         dot.setAttribute('data-name', h.clubName);
+        dot.setAttribute('aria-label', `Show ${h.clubName}`);
+        if (startIndex + i === historyIndex) dot.setAttribute('aria-current', 'true');
         dot.addEventListener('click', () => jumpToHistory(startIndex + i));
         container.appendChild(dot);
     });
@@ -142,10 +155,22 @@ function setupFeedback() {
     const form = document.getElementById('feedbackForm');
     const status = document.getElementById('feedbackStatus');
 
-    btn.addEventListener('click', () => { modal.style.display = 'flex'; });
-    closeBtn.addEventListener('click', () => { modal.style.display = 'none'; status.textContent = ''; });
+    const closeModal = () => {
+        modal.hidden = true;
+        status.textContent = '';
+        btn.focus();
+    };
+    btn.addEventListener('click', () => {
+        document.getElementById('feedbackClub').value = currentClub ? `${currentClub.clubName} (ID: ${currentClub.clubId})` : 'No club selected';
+        modal.hidden = false;
+        document.getElementById('feedbackText').focus();
+    });
+    closeBtn.addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => {
-        if (e.target === modal) { modal.style.display = 'none'; status.textContent = ''; }
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.hidden) closeModal();
     });
 
     form.addEventListener('submit', async (e) => {
@@ -161,7 +186,7 @@ function setupFeedback() {
                 status.textContent = 'Thanks! Report sent.';
                 status.style.color = '#4CAF50';
                 form.reset();
-                setTimeout(() => { modal.style.display = 'none'; }, 1500);
+                setTimeout(closeModal, 1500);
             } else {
                 throw new Error('Failed');
             }

@@ -4,17 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Random Football Club Logo</title>
+    <meta name="description" content="Discover a random football club logo from a collection of more than 20,000 clubs around the world.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#fafafa">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Random Football Club Logo">
+    <meta property="og:description" content="Discover a random football club logo from more than 20,000 clubs around the world.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Random Football Club Logo">
+    <meta name="twitter:description" content="Discover a random football club logo from more than 20,000 clubs around the world.">
+    <link rel="canonical" href="https://randomfootballclublogo.com/">
+    <meta property="og:url" content="https://randomfootballclublogo.com/">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button id="backButton" class="back-arrow" title="Previous logo">←</button>
+    <button id="backButton" class="back-arrow" title="Previous logo" aria-label="Show previous club" disabled>←</button>
 
     <div class="site">
         <h1>Random Football Club Logo</h1>
+        <p class="intro">Discover a random football club logo from more than 20,000 clubs around the world.</p>
         
         <div id="result" class="result" style="display: none;">
             <div class="logo-wrapper">
-                <img id="clubLogo" src="" alt="Club Logo">
+                <img id="clubLogo" alt="" width="300" height="300" decoding="async">
             </div>
             <p id="clubName"></p>
         </div>
@@ -22,21 +34,24 @@
         <button id="randomButton">GO</button>
     </div>
 
-    <div id="historyDots" class="history-dots"></div>
-    <button id="feedbackBtn" class="feedback-button" title="Report an Error">!</button>
+    <div id="historyDots" class="history-dots" aria-label="Recently viewed clubs"></div>
+    <button id="feedbackBtn" class="feedback-button" title="Report an error" aria-label="Report an error">!</button>
 
-    <div id="feedbackModal" class="modal" style="display: none;">
+    <div id="feedbackModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle" hidden>
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <h3>Report an Error</h3>
+            <button type="button" class="close" aria-label="Close feedback form">&times;</button>
+            <h2 id="feedbackTitle">Report an Error</h2>
             <p>If the logo doesn't match the club, let us know:</p>
             <form id="feedbackForm" action="https://formspree.io/f/xojrevay" method="POST">
+                <input type="hidden" id="feedbackClub" name="club">
                 <textarea id="feedbackText" name="message" placeholder="E.g.: Barcelona logo shows Real Madrid..." required></textarea>
                 <button type="submit" id="sendFeedback">Send</button>
             </form>
-            <p id="feedbackStatus"></p>
+            <p id="feedbackStatus" role="status" aria-live="polite"></p>
         </div>
     </div>
+
+    <noscript><p class="noscript">JavaScript is required to show random club logos.</p></noscript>
 
     <script src="script.js"></script>
 </body>
